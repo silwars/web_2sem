@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.29, for Linux (x86_64)
 --
--- Host: std-mysql    Database: std_1682_exam
+-- Host: std-mysql    Database: std_1630_exan
 -- ------------------------------------------------------
 -- Server version	5.7.26-0ubuntu0.16.04.1
 
@@ -213,7 +213,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (7,'admin','Ренат','Рахматуллаев','Русланович',1,'pbkdf2:sha256:260000$svhrN9ZNQ2k4VKsc$dc4753515c149eb01a6ed9e2f5af5ddb4ffe622c533613183ae88c9fe244cf03'),(16,'renat','Ренат','Рахматуллаев','Русланович',1,'pbkdf2:sha256:260000$KU5xVHWqiMtqtqlZ$e1bdb455292c320385e0a277c3099711d663419c3a145e9f6423bec405b705e3');
+INSERT INTO `users` VALUES (7,'admin','Ренат','Рахматуллаев','Русланович',1,'pbkdf2:sha256:260000$svhrN9ZNQ2k4VKsc$dc4753515c149eb01a6ed9e2f5af5ddb4ffe622c533613183ae88c9fe244cf03'),(16,'gma','Матвей','Гребенников','Матвеевич',1,'pbkdf2:sha256:260000$KU5xVHWqiMtqtqlZ$e1bdb455292c320385e0a277c3099711d663419c3a145e9f6423bec405b705e3');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

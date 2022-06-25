@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.29, for Linux (x86_64)
 --
--- Host: std-mysql    Database: std_1682_exam
+-- Host: std-mysql    Database: std_1630_exan
 -- ------------------------------------------------------
 -- Server version	5.7.26-0ubuntu0.16.04.1
 
