@@ -14,7 +14,7 @@
                     <div class="card-body ">
                         <h5 class="card-title">{{book.name_book}}</h5>
                         <p class="card-text">{{book.formatted_description|safe| truncate(140)}}</p>
-                        <p class="card-text">Жанр(ы): {%for genry in book.genrys %}{{genry.name}} {%endfor%}</p>
+                        <p class="card-text">Жанр(ы): {% for genry in book_genry %}{% if genry.id_book == book.id %}{{ genry.genry.name }}{% endif %}{% endfor %}</p>
                         <p class="card-text"><small class="text-muted">Дата написания: {{book.year.strftime('%Y')
                                 }}</small></p>
                         <p class="ms-auto rating">

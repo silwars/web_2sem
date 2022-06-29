@@ -1,8 +1,8 @@
 import functools
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from models import User, Visits
 
-from models import User
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -44,7 +44,11 @@ def login():
                 next = request.args.get('next')
                 return redirect(next or url_for('index'))
         flash('Введены неверные логин и/или пароль.', 'danger')
-    return render_template('auth/login.html')
+    flag = False
+    if current_user.is_anonymous:
+        flag = Visits.query.filter(Visits.user_id == None).filter(Visits.path.ilike("%show")).order_by(Visits.created_at.desc()).all()
+    return render_template('auth/login.html', flag = flag)
+
 
 @bp.route('/logout')
 @login_required

@@ -23,3 +23,6 @@ class UsersPolicy:
     def recieve_book(self):
         from models import Recives
         return Recives.query.filter(Recives.id_book == self.id_book).filter(Recives.id_users == current_user.id).first() is None and current_user.is_authenticated
+
+    def view_logs(self):
+        return current_user.is_admin

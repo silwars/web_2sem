@@ -26,6 +26,13 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+            <a class="nav-link bg-dark text-light  me-2" href="{{ url_for('visits.popular_book') }}">Популярные книги</a>
+            {%if current_user.che or flag%}
+            <a class="nav-link bg-dark text-light  me-2" href="{{ url_for('visits.last_book') }}">Последние просмотренные книги</a>
+            {%endif%}
+            {%if current_user.is_admin%}
+            <a class="nav-link bg-dark text-light  me-2" href="{{ url_for('visits.stat_users') }}">Статистика</a>
+            {%endif%}
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto pe-10 ">
                     {% if current_user.is_authenticated %}

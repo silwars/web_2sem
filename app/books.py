@@ -13,7 +13,7 @@ from auth import check_rights
 book_bp = Blueprint('books', __name__, url_prefix='/books')
 
 
-@book_bp.route('/<int:book_id>')
+@book_bp.route('/<int:book_id>/show')
 def show(book_id):
     book = Book.query.get(book_id)
     image = Covers.query.filter(Covers.id_book == book_id).first()
