@@ -1,0 +1,46 @@
+{% extends 'visits/base.html' %}
+{% from 'pagination.html' import render_pagination %}
+{% block tab_content  %}
+
+<h2>Статистика по пользователям</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Пользователь</th>
+            <th>Название книги</th>
+            <th>Дата и время просмотра</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for visit in visits %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>
+                {% if visit[0] %}
+                    {{ visit[0].full_name or '' }}
+                {% else %}
+                    Неавторизированный пользователь
+                {% endif %}
+                
+            </td>
+            <td>
+                
+                {{visit[1]}}
+                
+            </td>
+            <td>
+                
+                {{visit[2]}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{{ render_pagination(pagination, request.endpoint, {'fromdate':fromdate, 'todate': todate}) }}
+
+<a class="btn btn-primary mb-5" href="{{ url_for('visits.stat_users', download_csv='True') }}">Экcпорт в CSV</a>
+
+{% endblock %}

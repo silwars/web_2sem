@@ -1,0 +1,55 @@
+{% extends 'visits/base.html' %}
+{% from 'pagination.html' import render_pagination %}
+
+{% block tab_content %}
+
+<h2>Статистика по пользователям</h2>
+
+<div class="container my-3">
+    <form action="{{ users_stat }}" method="POST" style="max-width: 40rem;">
+        <div class="mb-3 row">
+            <label for="start">От:</label>
+            <input class="col-md-3 date-own form-control" type="date" id="start" name="trip-start" value="{{ fromdate or ''}}">
+            
+            <label for="end">До:</label>
+            <input class="col-md-3 date-own form-control" type="date" id="end" name="trip-end" value="{{ todate }}">
+        </div>
+        <div class="mb-3 ">
+            <input type="submit" class="btn btn-primary" value="Применить">
+        </div>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Название книги</th>
+            <th>Колличество просмотров</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for visit in visits %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>
+                    {%for v in visit%}
+                    {{v}}
+                    {%endfor%}
+                </td>
+                <td>
+                    {%for v in visit%}
+                    {{visit[v]}}
+                    {%endfor%}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{{ render_pagination(pagination, request.endpoint, {'fromdate':fromdate, 'todate': todate}) }}
+
+<a class="btn btn-primary mb-5" href="{{ url_for('visits.stat_books', download_csv='True') }}">Экcпорт в CSV</a>
+
+
+{% endblock %}
